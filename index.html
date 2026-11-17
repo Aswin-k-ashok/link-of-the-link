@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>~[ yourname ] · links</title>
+  <meta name="description" content="all my links in one place" />
+  <link rel="icon" href="https://instagram.fcok14-1.fna.fbcdn.net/v/t51.82787-19/575728875_17845665405603713_3601191450394908033_n.jpg?_nc_cat=103&_nc_map=urlgen_bucketless&ig_cache_key=GOvsUCKBD0jDiWY-AIFV9lCLAPoxbmNDAQAB0j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDY2LkMzIn0%3D&_nc_ohc=D9jke4uwMN8Q7kNvwHdKnbn&_nc_oc=Ado8mtcClACZke63G2BvkNRdEyjuShJumVQXsoOyBWtyC9ZUIsrTFAbRThHEVTIWZ7Q&_nc_zt=24&_nc_ht=instagram.fcok14-1.fna&_nc_gid=dWjAPf0o9BJ3IKnxDuL5qQ&_nc_ss=7baaf&_nc_ct=RQosPBUCFQIAAAA&oh=00_AQRU51Vv7AETor3J5vnovbZ7e17PxvURtDGws4j0uDRgsQ&oe=6B01D632" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============ THEME — tweak colors here ============ */
+    :root {
+      --bg:        #1a221f;   /* dark slate screen */
+      --bg-2:      #212b27;   /* panel background */
+      --ink:       #b9e3c0;   /* main phosphor green */
+      --ink-dim:   #7fa88a;   /* secondary text */
+      --ink-faint: #4f6b58;
+      --bar:       #8fbf98;   /* header bar fill */
+      --bar-ink:   #16201b;   /* text on header bar */
+      --glow: 0 0 2px rgba(185, 227, 192, .55), 0 0 8px rgba(185, 227, 192, .18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "DotGothic16", "Courier New", monospace;
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: .04em;
+      text-shadow: var(--glow);
+      padding: 40px 16px 64px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: none;
+    }
+
+    /* ---- CRT scanlines + vignette ---- */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 50;
+    }
+    body::before {
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0px,
+        rgba(0, 0, 0, 0) 2px,
+        rgba(0, 0, 0, .22) 3px
+      );
+    }
+    body::after {
+      background: radial-gradient(ellipse at center, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+      animation: flicker 6s infinite steps(1);
+    }
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      47%      { opacity: .92; }
+      48%      { opacity: 1; }
+      83%      { opacity: .95; }
+    }
+
+    main {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---- name ---- */
+    h1 {
+      font-size: clamp(30px, 8vw, 46px);
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 22px;
+      letter-spacing: .06em;
+    }
+    .cursor {
+      display: inline-block;
+      width: .5em;
+      height: .9em;
+      background: var(--ink);
+      margin-left: 6px;
+      vertical-align: -0.08em;
+      box-shadow: var(--glow);
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---- profile row ---- */
+    .profile {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+
+    .pfp {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--bar);
+      background: var(--bg-2);
+      filter: url(#phosphor) contrast(1.05);   /* green CRT tint — remove this line for original colors */
+      image-rendering: auto;
+    }
+
+    .status p { margin-bottom: 14px; color: var(--ink); }
+    .status .quote::before { content: "\""; }
+    .status .quote::after  { content: "\""; }
+
+    .online {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      color: var(--ink-dim);
+      font-size: 18px;
+      letter-spacing: .12em;
+    }
+    .online svg { width: 22px; height: 30px; fill: var(--ink-dim); filter: drop-shadow(0 0 3px rgba(185,227,192,.3)); }
+    .online span { animation: pulse 2.4s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .55; } }
+
+    .mood { margin: 18px 0 34px; }
+    .mood b { font-weight: 400; color: var(--ink); }
+    .mood em { font-style: normal; color: var(--ink-dim); }
+
+    /* ---- boxed panels ---- */
+    .panel {
+      border: 2px solid var(--bar);
+      background: var(--bg-2);
+      margin-bottom: 28px;
+    }
+    .panel h2 {
+      background: var(--bar);
+      color: var(--bar-ink);
+      text-shadow: none;
+      font-weight: 400;
+      font-size: 19px;
+      padding: 4px 14px;
+      letter-spacing: .06em;
+    }
+
+    .rows { list-style: none; padding: 8px 6px; }
+    .rows li + li { border-top: 1px dashed var(--ink-faint); }
+
+    .rows a {
+      display: grid;
+      grid-template-columns: 150px 1fr auto;
+      gap: 12px;
+      align-items: baseline;
+      padding: 9px 10px;
+      transition: background .08s, color .08s;
+    }
+    .rows .label { color: var(--ink); }
+    .rows .value { color: var(--ink-dim); word-break: break-word; }
+    .rows .arrow { color: var(--ink-faint); }
+
+    .rows a:hover,
+    .rows a:focus-visible {
+      background: var(--ink);
+      color: var(--bar-ink);
+      text-shadow: none;
+      outline: none;
+    }
+    .rows a:hover .label, .rows a:hover .value, .rows a:hover .arrow,
+    .rows a:focus-visible .label, .rows a:focus-visible .value, .rows a:focus-visible .arrow {
+      color: var(--bar-ink);
+    }
+    .rows a:hover .arrow::after { content: ""; }
+
+    .about {
+      padding: 12px 16px 14px;
+      color: var(--ink-dim);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--ink-faint);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    /* ---- phones ---- */
+    @media (max-width: 560px) {
+      body { font-size: 16px; padding-top: 28px; }
+      .profile { grid-template-columns: 1fr; gap: 18px; }
+      .pfp { max-width: 240px; }
+      .rows a { grid-template-columns: 1fr auto; }
+      .rows .value { grid-column: 1 / 2; grid-row: 2; font-size: 14px; }
+      .rows .arrow { grid-row: 1 / 3; align-self: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG filter that turns the pfp into green phosphor -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="phosphor" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="
+        0.165 0.3245 0.0605 0 0.05
+        0.255 0.5015 0.0935 0 0.12
+        0.180 0.354  0.066  0 0.08
+        0     0      0      1 0" />
+    </filter>
+  </svg>
+
+  <main>
+
+    <!-- ================= EDIT YOUR NAME ================= -->
+    <h1>[daily_n0ise]<span class="cursor" aria-hidden="true"></span></h1>
+
+    <section class="profile">
+      <!-- put your profile picture next to this file and name it pfp.jpg -->
+      <img class="pfp" src="https://instagram.fcok14-1.fna.fbcdn.net/v/t51.82787-19/575728875_17845665405603713_3601191450394908033_n.jpg?_nc_cat=103&_nc_map=urlgen_bucketless&ig_cache_key=GOvsUCKBD0jDiWY-AIFV9lCLAPoxbmNDAQAB0j-ccb7-5&ccb=7-5&_nc_sid=669407&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDY2LkMzIn0%3D&_nc_ohc=D9jke4uwMN8Q7kNvwHdKnbn&_nc_oc=Ado8mtcClACZke63G2BvkNRdEyjuShJumVQXsoOyBWtyC9ZUIsrTFAbRThHEVTIWZ7Q&_nc_zt=24&_nc_ht=instagram.fcok14-1.fna&_nc_gid=dWjAPf0o9BJ3IKnxDuL5qQ&_nc_ss=7baaf&_nc_ct=RQosPBUCFQIAAAA&oh=00_AQRU51Vv7AETor3J5vnovbZ7e17PxvURtDGws4j0uDRgsQ&oe=6B01D632" alt="profile picture"
+           onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 10%22><rect width=%2210%22 height=%2210%22 fill=%22%23212b27%22/><text x=%225%22 y=%226.4%22 font-size=%223%22 text-anchor=%22middle%22 fill=%22%237fa88a%22 font-family=%22monospace%22>pfp</text></svg>'" />
+
+      <div class="status">
+        <!-- ============ EDIT YOUR STATUS LINES ============ -->
+        <p class="quote">currently procrastinating</p>
+        <p class="quote">Adding fun in the disFUNctional</p>
+
+        <div class="online">
+          <!-- little pixel person -->
+          <svg viewBox="0 0 11 15" aria-hidden="true">
+            <rect x="3" y="0" width="5" height="5" />
+            <rect x="1" y="6" width="9" height="9" />
+          </svg>
+          <span>ONLINE! (maybe)</span>
+        </div>
+      </div>
+    </section>
+
+    <p class="mood"><b>Mood:</b> <em>vibing</em></p>
+
+    <!-- ===================== LINKS ===================== -->
+    <section class="panel">
+      <h2>~Social Links</h2>
+      <ul class="rows">
+        <li><a href="https://www.instagram.com/daily_n0ise_/" target="_blank" rel="noopener">
+          <span class="label">Instagram</span><span class="value">@daily_n0ise_</span><span class="arrow">&gt;</span></a></li>
+        <!-- <li><a href="https://x.com/yourhandle" target="_blank" rel="noopener">
+          <span class="label">Twitter / X</span><span class="value">@yourhandle</span><span class="arrow">&gt;</span></a></li> -->
+        <li><a href="https://www.youtube.com/@aswinkashok6213" target="_blank" rel="noopener">
+          <span class="label">YouTube</span><span class="value">@aswinkashok6213</span><span class="arrow">&gt;</span></a></li>
+        <!-- <li><a href="https://github.com/yourhandle" target="_blank" rel="noopener">
+          <span class="label">GitHub</span><span class="value">yourhandle</span><span class="arrow">&gt;</span></a></li> -->
+        <li><a href="https://steamcommunity.com/profiles/76561198870199476/" target="_blank" rel="noopener">
+          <span class="label">Steam</span><span class="value">aswinkashok0</span><span class="arrow">&gt;</span></a></li>
+        <li><a href="https://music.youtube.com/@aswinkashok6213" target="_blank" rel="noopener">
+          <span class="label">YouTube Music</span><span class="value">Avial music taste</span><span class="arrow">&gt;</span></a></li>
+      </ul>
+    </section>
+
+    <!-- ===================== ASSETS ===================== -->
+    <section class="panel">
+      <h2>~Assets</h2>
+      <ul class="rows">
+        <li><a href="https://music.youtube.com/playlist?list=PLKFT5c-nhM0Q" target="_blank" rel="noopener">
+          <span class="label">Reel playlist</span><span class="value">Mg annan's ayyappa devos</span><span class="arrow">&gt;</span></a></li>
+        <!-- <li><a href="assets/wallpapers.zip" download>
+          <span class="label">Wallpapers</span><span class="value">free download (.zip)</span><span class="arrow">&gt;</span></a></li>
+        <li><a href="https://ko-fi.com/yourhandle" target="_blank" rel="noopener">
+          <span class="label">Ko-fi</span><span class="value">buy me a tea</span><span class="arrow">&gt;</span></a></li> -->
+      </ul>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="panel">
+      <h2>About me</h2>
+      <p class="about">This page is here for my posting whatever I want to share with the world and trust me it will be ramdom shit .</p>
+    </section>
+
+    <footer>&copy; <span id="yr"></span> yourname · best viewed on a CRT</footer>
+  </main>
+
+  <script>document.getElementById("yr").textContent = new Date().getFullYear();</script>
+</body>
+</html>
